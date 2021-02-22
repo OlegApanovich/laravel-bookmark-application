@@ -15,6 +15,6 @@ use App\Http\Controllers\BookmarkController;
 |
 */
 
-Route::get('/', [CategoryController::class, 'index'] )->name('home');
-Route::resource('category', CategoryController::class, )->except(['index', 'show']);
-Route::resource('bookmark', BookmarkController::class, )->except(['show']);
+Route::get('/', [CategoryController::class, 'index'])->name('home');
+Route::resource('category', CategoryController::class)->except(['index', 'show']);
+Route::resource('bookmark', BookmarkController::class)->except(['show']);

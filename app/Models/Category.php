@@ -29,18 +29,16 @@ class Category extends Model
      * @param int $parent_id
      * @return string
      */
-    function generateBladeCategoryStructure($parent_id = 0): string
+    public function generateBladeCategoryStructure($parent_id = 0): string
     {
         // Define a default value for $html
         $html = '';
 
         // Loop through the results
-        foreach($this->getCategoryList() as $row) {
-
+        foreach ($this->getCategoryList() as $row) {
             // If the current records parent ID equals the requested
             // parent ID...
-            if((int)$row->parent_id == (int)$parent_id){
-
+            if ((int)$row->parent_id == (int)$parent_id) {
                 // Add an <li> element
                 $html .= '<li class="list-group-item cursor-pointer" data-category-id="' . $row->id . '">';
                 $html .= '<a href="#">';
@@ -51,7 +49,7 @@ class Category extends Model
                 // If this record does have children, generate a new
                 // <ul> element, and recall this function with a new
                 // parent ID
-                if($this->countChildren($row->parent_id > 0)){
+                if ($this->countChildren($row->parent_id > 0)) {
                     $html .= '<ul class="list-group">';
                     $html .= $this->generateBladeCategoryStructure($row->id);
                     $html .= '</ul>';
@@ -72,19 +70,18 @@ class Category extends Model
      * @param int $parent_id
      * @return int
      */
-    function countChildren($parent_id = 0): int
+    public function countChildren($parent_id = 0): int
     {
         // Set a default value to return. By default
         // Say this element has 0 children
         $childCount = 0;
 
         // Loop through each of the results
-        foreach($this::all() as $row){
-
+        foreach ($this::all() as $row) {
             // If the current records parent ID is the same
             // as the supplied parent ID, add 1 to the child
             // count
-            if((int)$row['parent_id']===(int)$parent_id) {
+            if ((int)$row['parent_id']===(int)$parent_id) {
                 $childCount += 1;
             }
         }
@@ -98,7 +95,7 @@ class Category extends Model
      *
      * @return array
      */
-    function getCategoryList(): array
+    public function getCategoryList(): array
     {
         return DB::table('categories')->get()->all();
     }
