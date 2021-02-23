@@ -30,6 +30,7 @@
     });
 
     jQuery('.category-list .badge-danger').click(function (e) {
+        console.log('there');
         e.preventDefault();
     });
 }());

@@ -23,11 +23,6 @@ class Category extends Model
         return $this->hasMany(Bookmark::class);
     }
 
-//    public function children()
-//    {
-//        return $this->hasMany(self::class, "id", "parent_id");
-//    }
-
     /**
      * Generate html structure for a main category hierarchy.
      *
@@ -50,7 +45,6 @@ class Category extends Model
             // If the current records parent ID equals the requested
             // parent ID...
             if ((int)$category->parent_id == (int)$parent_id) {
-                // Add an <li> element
                 $html .= view('category.list-element-start', ['category' => $category])->render();
                 $html .= view('category.badges', ['category' => $category->id])->render();
 
