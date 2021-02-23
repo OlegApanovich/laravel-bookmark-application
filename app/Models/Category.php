@@ -38,7 +38,7 @@ class Category extends Model
     {
         $list = $this->getCategoryList();
 
-        if($list->isEmpty()) {
+        if ($list->isEmpty()) {
             return "";
         }
 
