@@ -1,16 +1,28 @@
 (function () {
     jQuery('.category-list').click(function (e) {
-        let categoryId = parseInt(jQuery(e.target).data('category-id'));
+        let categoryId = parseInt(jQuery(e.target).data('category-id')),
+            a = jQuery(e.target).find('a').eq(0);
+
         if (categoryId) {
             displayCategoryBookmarks(categoryId);
+            toggleCategoryActiveClass(a);
+        }
+
+        var greed =  jQuery('.device-check:visible').attr('data-device');
+        if ( greed === 'xs' ) {
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#bookmark-wrapper").offset().top
+            }, 1500);
         }
     });
 
     jQuery('.category-list .category-link').click(function (e) {
-        console.log('here');
-        let categoryId = parseInt(jQuery(this).closest('li').data('category-id'));
+        let li = jQuery(this).closest('li'),
+            categoryId = parseInt(li.data('category-id'));
+
         if (categoryId) {
             displayCategoryBookmarks(categoryId);
+            toggleCategoryActiveClass(jQuery(this));
         }
     });
 
@@ -34,6 +46,11 @@
         e.preventDefault();
     });
 }());
+
+function toggleCategoryActiveClass(a) {
+    $('.list-group a.active').removeClass('active');
+    a.addClass('active');
+}
 
 /**
  * Remove category,

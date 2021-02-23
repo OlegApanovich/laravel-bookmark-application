@@ -1,3 +1,6 @@
+<h2>
+    {{$category->name}}
+</h2>
 <table class="table table-hover">
     <thead class="thead-light">
     <tr>
@@ -18,7 +21,7 @@
                 </a>
             </th>
             <td>{{$bookmark->description}}</td>
-            <td>{{$bookmark->url}}</td>
+            <td><a href="{{$bookmark->url}}" target="_blank">{{$bookmark->url}}</a></td>
         </tr>
     </tbody>
     @endforeach

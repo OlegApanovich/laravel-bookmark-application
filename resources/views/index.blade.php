@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-6">
+            <div class="col-sm">
                 {{-- page load alert --}}
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -32,7 +32,13 @@
                     {!! $category_blade_structure !!}
                 </ul>
             </div>
-            <div class="col-6">
+            <div class="device-visibility">
+                <div class="device-check .d-none d-xs-block d-sm-none" data-device="xs"></div>
+                <div class="device-check .d-none d-sm-block d-md-none" data-device="sm"></div>
+                <div class="device-check .d-none d-md-block d-lg-none" data-device="md"></div>
+                <div class="device-check .d-none d-lg-block" data-device="lg"></div>
+            </div>
+            <div class="col-sm">
                 <div id="bookmark-wrapper" class="table table-responsive">
                 </div>
             </div>

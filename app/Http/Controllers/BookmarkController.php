@@ -45,7 +45,10 @@ class BookmarkController extends Controller
             ]);
         } else {
             return response()->json([
-                'html' => view('bookmark.index', ['bookmarksCollection' => $category->bookmarks])->render(),
+                'html' => view('bookmark.index', [
+                    'bookmarksCollection' => $category->bookmarks,
+                    'category' => $category
+                ])->render(),
             ]);
         }
     }
