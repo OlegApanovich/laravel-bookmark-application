@@ -6,6 +6,14 @@
         }
     });
 
+    jQuery('.category-list .category-link').click(function (e) {
+        console.log('here');
+        let categoryId = parseInt(jQuery(this).closest('li').data('category-id'));
+        if (categoryId) {
+            displayCategoryBookmarks(categoryId);
+        }
+    });
+
     jQuery('#bookmark-wrapper').on('click', '.fa-minus', function (e) {
         e.preventDefault();
         let tr = jQuery(this).closest('tr'),
@@ -13,14 +21,18 @@
         removeBookmark(bookmarkId, tr);
     });
 
-    jQuery('.category-list').on('click', '.fa-minus', function (e) {
+    jQuery('.category-list .fa-minus').click(function (e) {
         e.preventDefault();
         let li = jQuery(this).closest('li'),
             categoryId = parseInt(li.data('category-id')),
             url = jQuery(this).closest('a').attr('href');
         removeCategory(categoryId, url, li);
     });
-}())
+
+    jQuery('.category-list .badge-danger').click(function (e) {
+        e.preventDefault();
+    });
+}());
 
 /**
  * Remove category,
@@ -98,9 +110,6 @@ function displayCategoryBookmarks(categoryId) {
         },
         success: function(response) {
             jQuery('#bookmark-wrapper').html(response.html);
-        },
-        error: function(response) {
-
         }
     });
 }

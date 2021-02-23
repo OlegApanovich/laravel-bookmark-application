@@ -54,12 +54,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request): RedirectResponse
     {
-        $success = Category::create([
-            'parent_id' => $request->parent_id,
-            'name' => $request->name,
-        ]);
-
-//        $success = Category::create($request->validated());
+        $success = Category::create($request->validated());
 
         if ($success) {
             return redirect()->route('home')->with('success', 'Category Add Success');

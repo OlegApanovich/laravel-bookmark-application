@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 use \Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
@@ -23,6 +23,11 @@ class Category extends Model
         return $this->hasMany(Bookmark::class);
     }
 
+//    public function children()
+//    {
+//        return $this->hasMany(self::class, "id", "parent_id");
+//    }
+
     /**
      * Generate html structure for a main category hierarchy.
      *
@@ -31,32 +36,31 @@ class Category extends Model
      */
     public function generateBladeCategoryStructure($parent_id = 0): string
     {
+        $list = $this->getCategoryList();
+
+        if($list->isEmpty()) {
+            return "";
+        }
+
         // Define a default value for $html
         $html = '';
 
         // Loop through the results
-        foreach ($this->getCategoryList() as $row) {
+        foreach ($list as $category) {
             // If the current records parent ID equals the requested
             // parent ID...
-            if ((int)$row->parent_id == (int)$parent_id) {
+            if ((int)$category->parent_id == (int)$parent_id) {
                 // Add an <li> element
-                $html .= '<li class="list-group-item cursor-pointer" data-category-id="' . $row->id . '">';
-                $html .= '<a href="#">';
-                $html .= $row->name;
-                $html .= view('category.badges', ['category' => $row->id])->render();
+                $html .= view('category.list-element-start', ['category' => $category])->render();
+                $html .= view('category.badges', ['category' => $category->id])->render();
 
-                // Before closing the <li>, check for any children
-                // If this record does have children, generate a new
-                // <ul> element, and recall this function with a new
-                // parent ID
-                if ($this->countChildren($row->parent_id > 0)) {
-                    $html .= '<ul class="list-group">';
-                    $html .= $this->generateBladeCategoryStructure($row->id);
-                    $html .= '</ul>';
+                if ($this->countChild($category->id)) {
+                    $html .= view('category.list-start')->render();
+                    $html .= $this->generateBladeCategoryStructure($category->id);
+                    $html .= view('category.list-end')->render();
                 }
 
-                // Now close the <li>
-                $html .= '</a></li>';
+                $html .= view('category.list-element-end')->render();
             }
         }
 
@@ -65,39 +69,35 @@ class Category extends Model
     }
 
     /**
-     * Count child for a certain category
+     * Count child categories for a certain category
      *
-     * @param int $parent_id
+     * @param $id
      * @return int
      */
-    public function countChildren($parent_id = 0): int
+    public function countChild($id)
     {
-        // Set a default value to return. By default
-        // Say this element has 0 children
         $childCount = 0;
 
-        // Loop through each of the results
-        foreach ($this::all() as $row) {
+        foreach ($this::all() as $category) {
             // If the current records parent ID is the same
             // as the supplied parent ID, add 1 to the child
             // count
-            if ((int)$row['parent_id']===(int)$parent_id) {
+            if ((int)$category['parent_id'] === (int)$id) {
                 $childCount += 1;
             }
         }
 
-        // Return the number of children
         return $childCount;
     }
 
     /**
      * Get all category list
      *
-     * @return array
+     * @return Collection
      */
-    public function getCategoryList(): array
+    public function getCategoryList():Collection
     {
-        return DB::table('categories')->get()->all();
+        return $this->all();
     }
 
     /**

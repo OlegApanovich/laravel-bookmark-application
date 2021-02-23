@@ -22,7 +22,7 @@
                     <strong></strong>
                 </div>
                 <a href="{{ route('category.create')  }}" type="button" class="btn btn-primary btn-sm float-left">
-                    Add Category
+                    {{ __("Add Category") }}
                 </a>
                 <a href="{{ route('bookmark.create')  }}" type="button" class="btn btn-primary btn-sm float-right">
                     Add Bookmark
