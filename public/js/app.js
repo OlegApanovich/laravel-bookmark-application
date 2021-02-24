@@ -8,12 +8,9 @@
             toggleCategoryActiveClass(a);
         }
 
-        var greed =  jQuery('.device-check:visible').attr('data-device');
-        if ( greed === 'xs' ) {
-            $([document.documentElement, document.body]).animate({
-                scrollTop: $("#bookmark-wrapper").offset().top
-            }, 1500);
-        }
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#bookmark-wrapper").offset().top
+        }, 1500);
     });
 
     jQuery('.category-list .category-link').click(function (e) {
