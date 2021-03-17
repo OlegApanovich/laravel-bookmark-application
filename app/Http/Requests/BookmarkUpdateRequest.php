@@ -24,9 +24,10 @@ class BookmarkUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'url' => 'required|url',
+            'url' => 'required',
             'description' => 'max:300',
             'category_id' => 'numeric',
+            'user_id' => 'required',
         ];
     }
 }

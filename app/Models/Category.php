@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use \Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Auth;
 
 class Category extends Model
 {
@@ -31,10 +32,14 @@ class Category extends Model
      */
     public function generateBladeCategoryStructure($parent_id = 0): string
     {
+        if (! Auth::check()) {
+            return  '';
+        }
+
         $list = $this->getCategoryList();
 
         if ($list->isEmpty()) {
-            return "";
+            return '';
         }
 
         // Define a default value for $html
@@ -68,7 +73,7 @@ class Category extends Model
      * @param $id
      * @return int
      */
-    public function countChild($id)
+    public function countChild($id): int
     {
         $childCount = 0;
 
@@ -91,7 +96,7 @@ class Category extends Model
      */
     public function getCategoryList():Collection
     {
-        return $this->all();
+        return $this->all()->where('user_id', '=', Auth::user()->id);
     }
 
     /**

@@ -15,12 +15,18 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->string('name');
             $table->timestamps();
             $table->foreign('parent_id')
                 ->references('id')
                 ->on('categories')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });

@@ -6,6 +6,7 @@
         <div class="row">
             <form method="post" action="{{ route('category.store') }}">
                 @csrf
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input id="name" type="text" name="name" class="form-control">

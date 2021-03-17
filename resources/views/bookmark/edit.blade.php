@@ -7,6 +7,7 @@
             <div class="col-12">
                 <form method="post" action="{{route('bookmark.update', ['bookmark' => $bookmark->id])}}">
                     @csrf
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <input name="_method" type="hidden" value="PUT">
                     <div class="form-group">
                         <label for="url">URL</label>

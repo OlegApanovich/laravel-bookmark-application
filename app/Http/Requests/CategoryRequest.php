@@ -25,7 +25,8 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|max:30',
-            'parent_id' => "sometimes"
+            'parent_id' => 'sometimes',
+            'user_id' => 'required'
         ];
     }
 }

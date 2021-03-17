@@ -7,6 +7,7 @@
             <div class="col-12">
                 <form method="post" action="{{ route('bookmark.store') }}">
                     @csrf
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <div class="form-group">
                         <label for="url">URL</label>
                         <input id="url" type="text" name="url" class="form-control">

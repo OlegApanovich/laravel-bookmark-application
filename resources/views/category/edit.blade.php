@@ -7,6 +7,7 @@
             <form method="post" action="{{route('category.update', ['category' => $category->id])}}">
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input id="name" type="text" value="{{ $category->name  }}" name="name" class="form-control">
@@ -19,9 +20,7 @@
                     <select id="parent-category" class="form-control" name="parent_id">
                         @foreach($category_list as $categoryEntity)
                             @if($category->id == $categoryEntity->id)
-                                @php
-                                    continue;
-                                @endphp
+                                @continue
                             @endif
 
                             @if($categoryEntity->id == $category->parent_id)
