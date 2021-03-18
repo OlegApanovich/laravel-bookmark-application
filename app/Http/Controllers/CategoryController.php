@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Http\Requests\CategoryRequest;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -28,6 +31,10 @@ class CategoryController extends Controller
      */
     public function index(): Response
     {
+//        $role = Role::where('name', 'user')->first();
+//        $user = Auth::user();
+//        $user->assignRole($role);
+
         $categoryBladeStructure = $this->category->generateBladeCategoryStructure();
 
         return response()->view('index', ['category_blade_structure' => $categoryBladeStructure]);

@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BookmarkUpdateRequest extends FormRequest
 {
@@ -24,9 +26,16 @@ class BookmarkUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'url' => 'required',
+            'url' =>[
+                'required',
+                'url',
+                'max:2048',
+            ],
             'description' => 'max:300',
-            'category_id' => 'numeric',
+            'category_id' => [
+                'numeric,
+                required'
+            ],
             'user_id' => 'required',
         ];
     }

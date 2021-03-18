@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -59,5 +61,27 @@ class User extends Authenticatable
     public function bookmarks(): HasMany
     {
         return $this->hasMany(Bookmark::class);
+    }
+
+    /**
+     * Many to many relation declaration.
+     *
+     * @return BelongsToMany
+     */
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class,'users_roles');
+    }
+
+    /**
+     * Assign specific role to user.
+     *
+     * @param Role $role
+     * @return Model
+     */
+    public function
+    assignRole(Role $role): Model
+    {
+        return $this->roles()->save($role);
     }
 }

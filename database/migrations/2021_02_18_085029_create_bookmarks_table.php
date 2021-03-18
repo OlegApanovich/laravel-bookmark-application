@@ -14,11 +14,11 @@ class CreateBookmarksTable extends Migration
     public function up()
     {
         Schema::create('bookmarks', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('url', 2050);
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->string('description')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedInteger('category_id')->nullable();
             $table->timestamps();
             $table->foreign('category_id')
                 ->references('id')

@@ -29,10 +29,11 @@ class BookmarkCreateRequest extends FormRequest
             'url' =>[
                 'required',
                 'url',
+                'max:2048',
                 function ($attribute, $value, $fail) {
                     $userHasBookmark =
                         DB::table('bookmarks')
-                            ->where('url', '=', $value)
+                            ->where($attribute, '=', $value)
                             ->where('user_id', '=', Auth::id())
                             ->exists();
 
@@ -42,7 +43,10 @@ class BookmarkCreateRequest extends FormRequest
                 },
             ],
             'description' => 'max:300',
-            'category_id' => 'numeric|required',
+            'category_id' => [
+                'numeric',
+                'required'
+            ],
             'user_id' => 'required',
         ];
     }
