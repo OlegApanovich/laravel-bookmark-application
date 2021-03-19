@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BookmarkController;
@@ -18,3 +19,5 @@ use App\Http\Controllers\BookmarkController;
 Route::get('/', [CategoryController::class, 'index'])->name('home');
 Route::resource('category', CategoryController::class)->except(['index', 'show'])->middleware(['auth']);
 Route::resource('bookmark', BookmarkController::class)->except(['show'])->middleware(['auth']);
+
+Route::get('/guest', [GuestController::class, 'store'])->name('guest');

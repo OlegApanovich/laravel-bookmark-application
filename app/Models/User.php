@@ -76,12 +76,14 @@ class User extends Authenticatable
     /**
      * Assign specific role to user.
      *
-     * @param Role $role
+     * @param $role
      * @return Model
      */
     public function
-    assignRole(Role $role): Model
+    assignRole(string $role): Model
     {
+        $role = Role::where('name', $role)->first();
+
         return $this->roles()->save($role);
     }
 }

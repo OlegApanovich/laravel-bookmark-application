@@ -33,8 +33,8 @@ class BookmarkUpdateRequest extends FormRequest
             ],
             'description' => 'max:300',
             'category_id' => [
-                'numeric,
-                required'
+                'numeric',
+                'required'
             ],
             'user_id' => 'required',
         ];
