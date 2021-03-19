@@ -37,7 +37,7 @@ class BookmarkCreateRequest extends FormRequest
                             ->where('user_id', '=', Auth::id())
                             ->exists();
 
-                    if ( $userHasBookmark ) {
+                    if ($userHasBookmark) {
                         $fail('User already has such url in bookmark list.');
                     }
                 },

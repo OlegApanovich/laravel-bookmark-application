@@ -33,8 +33,6 @@ class GuestController extends Controller
 
         return redirect()
             ->route('home')
-            ->with( $guest['status'], $guest['message']
-        );
+            ->with($guest['status'], $guest['message']);
     }
-
 }

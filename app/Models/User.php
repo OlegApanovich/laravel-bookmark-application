@@ -70,7 +70,7 @@ class User extends Authenticatable
      */
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class,'users_roles');
+        return $this->belongsToMany(Role::class, 'users_roles');
     }
 
     /**
@@ -79,8 +79,7 @@ class User extends Authenticatable
      * @param $role
      * @return Model
      */
-    public function
-    assignRole(string $role): Model
+    public function assignRole(string $role): Model
     {
         $role = Role::where('name', $role)->first();
 

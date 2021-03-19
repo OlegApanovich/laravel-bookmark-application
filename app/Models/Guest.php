@@ -35,12 +35,12 @@ class Guest extends Model
         ];
     }
 
-    public function populateDummyData() {
-        Artisan::call( 'db:seed', [
+    public function populateDummyData()
+    {
+        Artisan::call('db:seed', [
                 '--class' => 'GuestSeeder',
                 '--force' => true
-            ]
-        );
+            ]);
     }
 
     /**
