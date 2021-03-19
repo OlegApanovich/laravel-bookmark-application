@@ -56,8 +56,6 @@ class Guest extends Model
             'name' => 'Guest',
             'email' => $guestId . '@guest',
             'password' => 'password',
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
 
         $user->assignRole('guest');
