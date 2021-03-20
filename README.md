@@ -9,7 +9,8 @@ It is a simple Laravel 8 base application that allows you to keep and manage a d
 2. Create app environment file **cp .env.example .env** and configure it with your environment purpose.
 3. Move **composer install** 
 4. Then move **php artisan serve** 
-That's all now you can browse your application by follow link http://127.0.0.1:8000
+
+That's all. Now you can browse your application by follow link http://127.0.0.1:8000
 
 #### Optional
 For some hosting environment you need to run additional commands to provide appropriate file permission and generate app secret key
