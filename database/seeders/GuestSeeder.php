@@ -166,14 +166,6 @@ class GuestSeeder extends Seeder
 
         Bookmark::create([
             'user_id' => $user->id,
-            'url' => 'https://www.atptour.com/en/tournaments/wimbledon/540/overview',
-            'description' => 'History And Tradition At Wimbledon',
-            'category_id' => $tennis->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        Bookmark::create([
-            'user_id' => $user->id,
             'url' => 'https://www.historic-uk.com/CultureUK/The-History-of-the-Wimbledon-Tennis-Championships/',
             'description' => 'The History of the Wimbledon Tennis Championships',
             'category_id' => $tennis->id,
