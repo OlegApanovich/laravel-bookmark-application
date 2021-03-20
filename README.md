@@ -18,8 +18,8 @@ chmod -R guo+w storage
 php artisan key:generate
 php artisan cache:clear
 
-Also add .htaccess to public app folder with and put some rewrite rules to it
-
+Also you may have add .htaccess to public app folder with and put some rewrite rules to it
+```
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
@@ -36,3 +36,4 @@ Also add .htaccess to public app folder with and put some rewrite rules to it
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+```
