@@ -11,4 +11,4 @@ It is a simple Laravel 8 base application that allows you to keep and manage a d
 4. Then move **php artisan serve** 
 That's all now you can browse your application by follow link http://127.0.0.1:8000
 
-### Optional install 
+#### Optional
