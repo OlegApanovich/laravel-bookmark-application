@@ -14,9 +14,13 @@ That's all. Now you can browse your application by follow link http://127.0.0.1:
 
 #### Optional
 For some hosting environment you need to run additional commands to provide appropriate file permission and generate app secret key
+
 chmod -R gu+w storage
+
 chmod -R guo+w storage
+
 php artisan key:generate
+
 php artisan cache:clear
 
 Also you may have add .htaccess to public app folder with and put some rewrite rules to it
