@@ -23,7 +23,7 @@ php artisan key:generate
 
 php artisan cache:clear
 
-Also you may have add .htaccess to public app folder with and put some rewrite rules to it
+Also you may have add .htaccess to public app folder and put some rewrite rules to it
 ```
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
