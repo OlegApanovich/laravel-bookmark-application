@@ -7,7 +7,7 @@ It is a simple Laravel 8 based application that allows you to keep and manage a 
 ## Installation
 1. Clone the repository to your installation folder
 ```bash
-git clone git@github.com:OlegApanovich/laravel-bookmark-application.git .
+git clone git@github.com:OlegApanovich/laravel-bookmark-application.git
 ```
 
 2. Create an app environment file
