@@ -9,15 +9,18 @@ It is a simple Laravel 8 base application that allows you to keep and manage a d
 ```bash
 git clone git@github.com:OlegApanovich/laravel-bookmark-application.git .
 ```
+
 2. Create app environment file
 ```bash
 cp .env.example .env
 ```
 And configure it with your environment's purpose.
+
 4. Then
 ```bash
 composer install
 ``` 
+
 5. Then
 ```bash
 php artisan serve
