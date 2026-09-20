@@ -1,8 +1,8 @@
 ## Description
-It is a simple Laravel 8 based application that allows you to keep and manage a directory of personal links.
+It is a simple Laravel 8-based application that allows you to keep and manage a directory of personal links.
 
 ## Demo
-[You can browse application demo and play with dummy data.](https://bookmarks.monolitpro.info)
+[You can browse the application demo and play with dummy data.](https://bookmarks.joywp.com)
 
 ## Installation
 1. Clone the repository to your installation folder
